@@ -18,6 +18,12 @@ cask "otterkeep" do
   app "OtterKeep.app"
   binary "#{appdir}/OtterKeep.app/Contents/MacOS/otterkeep"
 
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-rd", "com.apple.quarantine", "{{appdir}}/OtterKeep.app"],
+        must_succeed: false
+  end
+
   zap trash: [
     "~/.otterkeep",
     "~/Library/Application Support/OtterKeep",
