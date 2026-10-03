@@ -1,10 +1,10 @@
 cask "otterkeep" do
   version "1.0.0"
-  sha256 "554309fc3e19e9631cc4ae27ebefbd95415d4af1845ff82bd618dfc60d7892cc"
+  sha256 "e0b7336e495573ed07614ee1c83ba3896156b40a45a906b973da6627a826b493"
 
   url "https://github.com/richardeszeshu/otter-keep/releases/download/v#{version}/OtterKeep-#{version}.zip"
   name "OtterKeep"
-  desc "Autonomous, APFS-native incremental backup & replication engine for macOS"
+  desc "Autonomous, APFS-native incremental backup & replication engine"
   homepage "https://github.com/richardeszeshu/otter-keep"
 
   livecheck do
@@ -13,23 +13,18 @@ cask "otterkeep" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sequoia
 
   app "OtterKeep.app"
   binary "#{appdir}/OtterKeep.app/Contents/MacOS/otterkeep"
-
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-rd", "com.apple.quarantine", "#{appdir}/OtterKeep.app"]
-  end
 
   zap trash: [
     "~/.otterkeep",
     "~/Library/Application Support/OtterKeep",
     "~/Library/Caches/com.otterkeep.app",
     "~/Library/HTTPStorages/com.otterkeep.app",
+    "~/Library/Logs/OtterKeep",
     "~/Library/Preferences/com.otterkeep.app.plist",
     "~/Library/Saved Application State/com.otterkeep.app.savedState",
-    "~/Library/Logs/OtterKeep",
   ]
 end
