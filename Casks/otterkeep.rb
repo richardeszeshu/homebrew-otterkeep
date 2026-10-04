@@ -1,6 +1,6 @@
 cask "otterkeep" do
-  version "1.3.0"
-  sha256 "5a110ff9a3884b3f552276d92e0b0a287a9d98911006e33b89bea6d8a5ba34f9"
+  version "1.3.1"
+  sha256 "3229bf2499bf705d2c0008e8016b2ccec68213e35b40fb5300a2005743d534e0"
 
   url "https://github.com/richardeszeshu/otter-keep/releases/download/v#{version}/OtterKeep-#{version}.zip"
   name "OtterKeep"
